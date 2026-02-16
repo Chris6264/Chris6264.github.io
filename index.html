@@ -1,0 +1,1008 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chris Chaparro - Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8f9fa;
+        --accent: #000000;
+        --accent-secondary: #4a5568;
+        --gradient-1: linear-gradient(135deg, #434343 0%, #000000 100%);
+        --gradient-2: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+        --gradient-3: linear-gradient(135deg, #363636 0%, #1a1a1a 100%);
+        --text-primary: #1a202c;
+        --text-secondary: #718096;
+        --border: #e2e8f0;
+        --shadow: rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .bg-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.08;
+      }
+
+      .bg-animation::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(0, 0, 0, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(67, 67, 67, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 50% 20%,
+            rgba(44, 62, 80, 0.1) 0%,
+            transparent 50%
+          );
+        animation: float 20s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(30px, -50px) rotate(5deg);
+        }
+        66% {
+          transform: translate(-20px, 20px) rotate(-5deg);
+        }
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 2rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 2px 20px var(--shadow);
+        animation: slideDown 0.6s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 3rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--gradient-1);
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text-primary);
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 0 5%;
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        animation: fadeInUp 1s ease-out 0.3s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero .subtitle {
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        font-weight: 300;
+      }
+
+      .hero .description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+        max-width: 600px;
+        line-height: 1.8;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background: var(--gradient-1);
+        color: #ffffff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text-primary);
+        border: 2px solid var(--accent);
+      }
+
+      .btn-secondary:hover {
+        background: var(--accent);
+        color: #ffffff;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+
+      section {
+        padding: 8rem 5%;
+        position: relative;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 5rem;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      .section-header h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        margin-bottom: 1rem;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-header p {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .project-card {
+        background: #ffffff;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        transition: all 0.4s ease;
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+        box-shadow: 0 2px 10px var(--shadow);
+        cursor: default;
+      }
+
+      .project-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .project-card:nth-child(1) .project-logo img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
+      .project-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .project-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .project-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .project-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .project-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border-color: transparent;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 250px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .project-card:nth-child(1) .project-image {
+        background: var(--gradient-1);
+      }
+      .project-card:nth-child(2) .project-image {
+        background: var(--gradient-2);
+      }
+      .project-card:nth-child(3) .project-image {
+        background: var(--gradient-3);
+      }
+      .project-card:nth-child(4) .project-image {
+        background: var(--gradient-1);
+      }
+      .project-card:nth-child(5) .project-image {
+        background: var(--gradient-2);
+      }
+      .project-card:nth-child(6) .project-image {
+        background: var(--gradient-3);
+      }
+
+      .project-logo {
+        width: 120px;
+        height: 120px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        font-weight: 700;
+        backdrop-filter: blur(10px);
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        z-index: 1;
+      }
+
+      .project-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 27px;
+      }
+
+      .project-image::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+      }
+
+      .project-image::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 250px;
+        height: 250px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+      }
+
+      .project-content {
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        text-align: center;
+      }
+
+      .project-description {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        text-align: justify;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+
+      .tag {
+        padding: 0.4rem 1rem;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .tag:hover {
+        background: var(--gradient-1);
+        color: #ffffff;
+        border-color: transparent;
+      }
+
+      .project-links {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .project-links .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.85rem;
+      }
+
+      .skills-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .skill-category {
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+        animation: fadeInUp 0.8s ease-out;
+        animation-fill-mode: both;
+        box-shadow: 0 2px 10px var(--shadow);
+      }
+
+      .skill-category:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .skill-category:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .skill-category:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .skill-category:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .skill-category:nth-child(5) {
+        animation-delay: 0.5s;
+        grid-column: 1 / -1;
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .skill-category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .skill-category h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .skill-list {
+        list-style: none;
+      }
+
+      .skill-list li {
+        padding: 0.8rem 0;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .skill-list li:last-child {
+        border-bottom: none;
+      }
+
+      .skill-list li:hover {
+        color: var(--text-primary);
+        padding-left: 10px;
+      }
+
+      .skill-note {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        font-style: italic;
+        margin-left: 0.5rem;
+      }
+
+      .contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .contact-content {
+        background: #ffffff;
+        padding: 4rem;
+        border-radius: 30px;
+        border: 1px solid var(--border);
+        animation: fadeInUp 0.8s ease-out;
+        box-shadow: 0 2px 20px var(--shadow);
+      }
+
+      .contact-content h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .contact-content p {
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .social-links a {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+        background: var(--bg-secondary);
+      }
+
+      .social-links a:hover {
+        background: var(--gradient-1);
+        color: #ffffff;
+        border-color: transparent;
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      footer {
+        padding: 3rem 5%;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        color: var(--text-secondary);
+      }
+
+      @media (max-width: 992px) {
+        .skills-container {
+          grid-template-columns: 1fr;
+        }
+
+        .skill-category:nth-child(5) {
+          grid-column: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 1.5rem 5%;
+        }
+
+        .nav-links {
+          gap: 1.5rem;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+        }
+
+        .contact-content {
+          padding: 2rem;
+        }
+
+        .social-links {
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="bg-animation"></div>
+
+    <nav>
+      <div class="logo">CHRIS CHAPARRO</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Software Engineer & Creative Thinker</h1>
+        <p class="subtitle">Crafting digital experiences that matter</p>
+        <p class="description">
+          Software Engineering, with a strong passion for programming and
+          technology.
+        </p>
+        <div class="cta-buttons">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-header">
+        <h2>Featured Projects</h2>
+        <p>A collection of my recent work and experiments</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-image">
+            <div class="project-logo">
+              <img src="assets/images/tas.png" alt="TAS Logo" />
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Te Acerco Salud (TAS)</h3>
+            <p class="project-description">
+              Te Acerco Salud is a web and mobile platform that connects
+              patients with a collaborative pharmacy network to streamline
+              prescription fulfillment. Users can upload prescriptions, select
+              their preferred pharmacy, and ensure complete medication
+              availability without visiting multiple locations.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Web App</span>
+              <span class="tag">Mobile App</span>
+              <span class="tag">PHP</span>
+              <span class="tag">Android Studio</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">Laravel</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Route Optimization</span>
+              <span class="tag">UP</span>
+              <span class="tag">UWE</span>
+              <span class="tag">Object-Oriented Programming</span>
+              <span class="tag">MVC</span>
+            </div>
+
+            <div class="project-links">
+              <a
+                href="https://github.com/TasWebTeam/TasWebProject"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <div class="project-logo">
+              <img src="assets/images/aimind.png" alt="AIMind Logo" />
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">AIMind</h3>
+            <p class="project-description">
+              AIMind is a virtual psychologist mobile application powered by
+              Llama 4 AI that provides mental health support through
+              conversational therapy, Cognitive Behavioral Therapy (CBT)
+              exercises, and therapeutic journaling.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Mobile App</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Supabase</span>
+              <span class="tag">API</span>
+              <span class="tag">AI</span>
+              <span class="tag">Auth</span>
+              <span class="tag">Llama 4</span>
+            </div>
+
+            <div class="project-links">
+              <a
+                href="https://github.com/AimindT/Aimind_Project"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <div class="project-logo">
+              <img src="assets/images/wam.png" alt="WAM Logo" />
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Warranty Auto Manager</h3>
+            <p class="project-description">
+              Warranty Auto Manager is a mobile application designed to digitize
+              and streamline repair warranty tracking in automotive workshops,
+              improving record accuracy and operational efficiency.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Mobile App</span>
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Cloud Storage</span>
+              <span class="tag">FireStore</span>
+              <span class="tag">CRUD</span>
+              <span class="tag">JSON</span>
+              <span class="tag">Auth</span>
+            </div>
+
+            <div class="project-links">
+              <a
+                href="https://github.com/Chris6264/warranty_auto_manager"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <div class="project-logo">🌧️</div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">ConAIgua (In Progress)</h3>
+            <p class="project-description">
+              ConAIgua is a web-based chatbot, designed specifically for weather
+              information queries. It leverages Large Language Models (LLMs) and
+              Retrieval-Augmented Generation (RAG) to deliver accurate, natural
+              language responses based on historical data from the Comisión
+              Nacional del Agua (National Water Commission of Mexico). The
+              platform enables users to explore and understand meteorological
+              data through conversational interaction, making complex historical
+              weather information more accessible and user-friendly.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Web App</span>
+              <span class="tag">Svelte</span>
+              <span class="tag">Svelte Kit</span>
+              <span class="tag">Rust</span>
+              <span class="tag">Axum</span>
+              <span class="tag">LLM</span>
+              <span class="tag">ChatBot</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">AI Agents</span>
+              <span class="tag">Transformer Architecture</span>
+            </div>
+
+            <div class="project-links">
+              <a
+                href="https://github.com/Chris6264/ConAIgua"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-header">
+        <h2>Skills & Expertise</h2>
+        <p>Technologies and tools I work with</p>
+      </div>
+
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3>Programming Languages</h3>
+          <ul class="skill-list">
+            <li>Python</li>
+            <li>Java</li>
+            <li>C++</li>
+            <li>Rust <span class="skill-note">(Learning)</span></li>
+            <li>Angular</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <ul class="skill-list">
+            <li>Svelte / SvelteKit <span class="skill-note">(Learning)</span></li>
+            <li>Flutter (Dart)</li>
+            <li>JavaScript (ES6+)</li>
+            <li>HTML5 / CSS3</li>
+            <li>Tailwind CSS</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Backend</h3>
+          <ul class="skill-list">
+            <li>PHP / Laravel</li>
+            <li>RESTful API Design</li>
+            <li>Firebase (Auth, Firestore, Storage)</li>
+            <li>Supabase</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Databases</h3>
+          <ul class="skill-list">
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>Redis <span class="skill-note">(Learning)</span></li>
+            <li>Cloud Firestore</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h3>Tools & Workflow</h3>
+          <ul class="skill-list">
+            <li>Git / GitHub</li>
+            <li>Docker <span class="skill-note">(Basics)</span></li>
+             <li>AWS <span class="skill-note">(Basics)</span></li>
+            <li>Agile / Scrum</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact-container">
+        <div class="contact-content">
+          <h3>Let's Work Together</h3>
+          <p>
+            Have a project in mind? Remember, if you can imagine it, you can
+            program it. Get in touch and let's create something amazing.
+          </p>
+
+          <a href="mailto:your.email@example.com" class="btn btn-primary"
+            >Send Me an Email</a
+          >
+
+          <div class="social-links">
+            <a
+              href="https://github.com/Chris6264"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="GitHub"
+            >
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                />
+              </svg>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/christopher-chaparro-castillo/?locale=en_US"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn"
+            >
+              <svg
+                width="24"
+                height="24"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 Christopher Chaparro</p>
+    </footer>
+
+    <script>
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".project-card, .skill-category")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+    </script>
+  </body>
+</html>
