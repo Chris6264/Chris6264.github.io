@@ -625,27 +625,171 @@
 
       @media (max-width: 768px) {
         nav {
-          padding: 1.5rem 5%;
+          padding: 1rem 5%;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .logo {
+          font-size: 1.2rem;
         }
 
         .nav-links {
           gap: 1.5rem;
+          font-size: 0.85rem;
+        }
+
+        .hero {
+          padding: 0 5%;
+          min-height: 90vh;
+        }
+
+        .hero h1 {
+          font-size: clamp(2rem, 10vw, 3rem);
+        }
+
+        .hero .subtitle {
+          font-size: clamp(1rem, 5vw, 1.3rem);
+        }
+
+        .hero .description {
+          font-size: 1rem;
+        }
+
+        section {
+          padding: 4rem 5%;
+        }
+
+        .section-header {
+          margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+          font-size: clamp(2rem, 8vw, 2.5rem);
+        }
+
+        .section-header p {
+          font-size: 1rem;
         }
 
         .projects-grid {
           grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .project-card {
+          max-width: 100%;
+        }
+
+        .project-image {
+          height: 200px;
+        }
+
+        .project-logo {
+          width: 100px;
+          height: 100px;
+          font-size: 2.5rem;
+        }
+
+        .project-content {
+          padding: 1.5rem;
+        }
+
+        .project-title {
+          font-size: 1.3rem;
+        }
+
+        .project-description {
+          font-size: 0.95rem;
+          text-align: left;
+        }
+
+        .tag {
+          font-size: 0.75rem;
+          padding: 0.3rem 0.8rem;
         }
 
         .cta-buttons {
           flex-direction: column;
+          width: 100%;
+        }
+
+        .btn {
+          width: 100%;
+          text-align: center;
         }
 
         .contact-content {
-          padding: 2rem;
+          padding: 2rem 1.5rem;
+        }
+
+        .contact-content h3 {
+          font-size: 2rem;
+        }
+
+        .contact-content p {
+          font-size: 1rem;
         }
 
         .social-links {
+          gap: 1.5rem;
+        }
+
+        .social-links a {
+          width: 50px;
+          height: 50px;
+        }
+
+        footer {
+          padding: 2rem 5%;
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          padding: 0.8rem 3%;
+        }
+
+        .nav-links {
           gap: 1rem;
+          font-size: 0.8rem;
+        }
+
+        .hero {
+          padding: 0 3%;
+        }
+
+        section {
+          padding: 3rem 3%;
+        }
+
+        .project-image {
+          height: 180px;
+        }
+
+        .project-logo {
+          width: 80px;
+          height: 80px;
+          font-size: 2rem;
+        }
+
+        .project-image::before {
+          width: 150px;
+          height: 150px;
+        }
+
+        .project-image::after {
+          width: 180px;
+          height: 180px;
+        }
+
+        .skill-category {
+          padding: 1.5rem;
+        }
+
+        .contact-content {
+          padding: 1.5rem 1rem;
         }
       }
     </style>
@@ -864,7 +1008,7 @@
             <li>Python</li>
             <li>Java</li>
             <li>C++</li>
-            <li>Rust <span class="skill-note">(Learning)</span></li>
+            <li>Rust <span class="skill-note">(learning)</span></li>
             <li>Angular</li>
           </ul>
         </div>
@@ -872,7 +1016,7 @@
         <div class="skill-category">
           <h3>Frontend</h3>
           <ul class="skill-list">
-            <li>Svelte / SvelteKit <span class="skill-note">(Learning)</span></li>
+            <li>Svelte / SvelteKit</li>
             <li>Flutter (Dart)</li>
             <li>JavaScript (ES6+)</li>
             <li>HTML5 / CSS3</li>
@@ -895,7 +1039,7 @@
           <ul class="skill-list">
             <li>PostgreSQL</li>
             <li>MySQL</li>
-            <li>Redis <span class="skill-note">(Learning)</span></li>
+            <li>Redis</li>
             <li>Cloud Firestore</li>
           </ul>
         </div>
@@ -904,8 +1048,8 @@
           <h3>Tools & Workflow</h3>
           <ul class="skill-list">
             <li>Git / GitHub</li>
-            <li>Docker <span class="skill-note">(Basics)</span></li>
-             <li>AWS <span class="skill-note">(Basics)</span></li>
+            <li>Docker</li>
+            <li>AWS (Basics)</li>
             <li>Agile / Scrum</li>
           </ul>
         </div>
